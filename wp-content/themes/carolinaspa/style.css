@@ -1,0 +1,404 @@
+/*
+Theme Name: Carolina SPA
+Theme URI: http://carolinawp.dev
+Author: Massimo Biagioli
+Author URI: 
+Description: Wordpress Theme for Carolina SPA
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0/html
+Tags: spa, responsive, bootstrap
+Text Domain: Carolina Spa
+*/
+
+
+/** Common **/
+
+body {
+    background-color: #fafafa;
+}
+
+h2 {
+    font-size: 2.4rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h2,
+h3 {
+    font-family: 'Lato', sans-serif;
+    color: #000;
+    line-height: 2.4rem;
+}
+
+h2 span {
+    font-size: 4rem;
+}
+
+h3 span {
+    font-size: 3rem;
+}
+
+h2 span,
+h3 span {
+    font-family: 'Italianno', cursive;
+    display: block;
+    color: #e082a8;
+}
+
+
+/** Social Menu **/
+
+.socials ul {
+    list-style: none;
+}
+
+.socials ul li {
+    position: relative;
+    display: inline-block;
+}
+
+.socials ul li a::before {
+    font-family: 'FontAwesome';
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 .4rem;
+    content: '\f08e';
+    color: #e082a8;
+    -webkit-font-smoothing: antialiased;
+}
+
+.socials ul li a[href*="facebook.com"]::before {
+    content: '\f230';
+}
+
+.socials ul li a[href*="twitter.com"]::before {
+    content: '\f081';
+}
+
+.socials ul li a[href*="instagram.com"]::before {
+    content: '\f16d';
+}
+
+.socials ul li a[href*="pinterest.com"]::before {
+    content: '\f0d2';
+}
+
+.socials ul li a[href*="youtube.com"]::before {
+    content: '\f16a';
+}
+
+
+/** Navigation **/
+
+.navigation {
+    background-color: #8ed3cc;
+}
+
+.bg-faded {
+    background-color: transparent;
+}
+
+.navbar-toggler {
+    background-color: #fff;
+}
+
+.navbar-brand {
+    color: #fff !important;
+}
+
+.flex-sm-row {
+    width: 100%;
+}
+
+nav.main-nav {
+    background-image: url(img/border_horizontal.png), url(img/border_horizontal.png);
+    background-repeat: repeat-x;
+    background-position: 0px top, 0px bottom;
+}
+
+nav.main-nav .nav-item {
+    -webkit-transition: background-color .3s ease;
+    transition: background-color .3s ease;
+}
+
+nav.main-nav .nav-item:hover {
+    background-color: #39a69b;
+    border-radius: 10px;
+}
+
+nav.main-nav .nav-link {
+    font-size: 1.4rem;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+/** Carousel **/
+
+.carousel .carousel-caption h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+
+/** New website **/
+
+.new-website p {
+    font-size: 1.6rem;
+    color: #979797;
+    font-family: 'Lato', sans-serif;
+}
+
+
+/** Image Links **/
+
+.image-links img {
+    border: 6px solid #fff;
+    -webkit-transition: transform .3s ease;
+    -ms-transition: transform .3s ease;
+    transition: transform .3s ease;
+}
+
+.image-links img:hover {
+    -webkit-transform: scale(1.2) rotate(10deg);
+    -ms-transform: scale(1.2) rotate(10deg);
+    transform: scale(1.2) rotate(10deg);
+}
+
+.image-info {
+    background-color: #fff;
+    margin-top: -50px;
+}
+
+.image-info .btn-success {
+    background-color: #e082a8;
+    border: none;
+    border-radius: 0;
+}
+
+.image-info .btn-success:hover {
+    background-color: #ca5b88;
+}
+
+
+/** Business Hours **/
+
+.business-hours {
+    background-color: #8ed3cc;
+    color: #fff;
+}
+
+.business-hours h2 {
+    color: #fff;
+}
+
+.bg-hours {
+    background-image: url(../img/bg_hours.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 300px;
+}
+
+.table {
+    border: 2px solid #e082a8;
+}
+
+.table th td {
+    border: none;
+}
+
+.table tr td {
+    padding: .35rem;
+}
+
+.table-danger,
+.table-hover .table-danger:hover {
+    background-color: #e082a8;
+}
+
+
+/** Products **/
+
+.products .card {
+    border: none;
+}
+
+.products .card a {
+    color: #000;
+}
+
+.products .card a:hover {
+    text-decoration: none;
+}
+
+.products .card h3 {
+    font-size: 1.3rem;
+    color: #e082a8;
+}
+
+.products .card p {
+    font-size: .8rem;
+}
+
+.products .card p.price {
+    font-size: 1.5rem;
+    font-family: 'Lato', sans-serif;
+    color: #979797;
+}
+
+
+/** Appointment 
+    (Parallax Effext)
+**/
+
+.appointment {
+    background-image: url(../img/bg_appointment.jpg);
+    background-repeat: none;
+    background-position: center center;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+@media (min-width: 992px) {
+    .appointment {
+        background-size: cover;
+    }
+}
+
+.appointment h3 {
+    font-size: 3.5rem;
+    color: #fff;
+    line-height: 4rem;
+}
+
+.appointment p {
+    line-height: 2.6rem;
+}
+
+.appointment .btn-primary {
+    background-color: #8ed3cc;
+    border: none;
+    border-radius: 0;
+    padding: 1rem 5rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.appointment .btn-primary:hover {
+    background-color: #68beb5;
+}
+
+
+/** Footer **/
+
+.site-footer p.copyright {
+    font-family: 'Lato', sans-serif;
+    color: #979797;
+}
+
+
+/** Internal Pages **/
+
+/* About */
+
+.hero {
+    position: relative;
+}
+
+.hero h2 {
+    background-color: #8ed3cc;
+    bottom: 2rem;
+    right: 0;
+    position: absolute;
+    padding: 1rem 2rem 1rem 6rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    color: #fff;
+}
+
+.main-content p {
+    line-height: 2rem;
+}
+
+.sidebar.hours {
+    background-color: #8ed3cc;
+    color: #fff;
+}
+
+.sidebar.hours p {
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2rem;
+}
+
+.sidebar.hours h2 {
+    color: #fff;
+}
+
+/* Services, Products */
+
+#services .card-header {
+    background-color: #e082a8;
+}
+
+#services .card-header h3 a {
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.8rem;
+}
+
+#services .card-block {
+    font-size: 1.2rem;
+    line-height: 2.4rem;
+}
+
+aside.discount,
+aside.product_description {
+    background-color: #8ed3cc;
+    color: #fff;
+    -moz-background-clip: content-box;
+    -webkit-background-clip: content-box;
+    background-clip: content-box;
+}
+
+aside.discount h3,
+aside.product_description h3 {
+    color: #fff;
+}
+
+aside.discount .coupon {
+    border: 3px dashed white;
+}
+
+aside.discount .coupon p {
+    font-family: 'Lato', sans-serif;
+    font-size: 2rem;
+}
+
+aside.discount .coupon p span {
+    display: block;
+}
+
+/* Contact Form */
+
+.contact-form {
+    border: 2px solid #9a9a9a;
+    background-color: #fff;
+}
+
+.contact-form .btn-primary {
+    background-color: #8ed3cc;
+    border: none;
+    border-radius: 0;
+    padding: 1rem 6rem;
+}
+
+.contact-form .btn-primary:hover {
+    background-color: #6bbdb5;
+    cursor: pointer;
+}
