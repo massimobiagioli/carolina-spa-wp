@@ -15,7 +15,7 @@
     <header class="site-header container">
         <div class="row justify-content-center justify-content-lg-between">
             <div class="col-8 col-lg-4">
-                <a href="index.php">
+                <a href="<?php echo esc_url(home_url('/')); ?>">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" class="img-fluid mx-auto d-block">
                 </a>
             </div>
