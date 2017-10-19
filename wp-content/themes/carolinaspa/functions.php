@@ -32,6 +32,10 @@ function carolinaspa_setup() {
     update_option('thumbnail_size_w', 216);
     update_option('thumbnail_size_h', 144);
     update_option('thumbnail_crop', 1);
+
+    // Add new image size
+    add_image_size('product_thumb', 400, 266, true);
+    add_image_size('slider', 1140, 543, true);
 }
 
 add_action('after_setup_theme', 'carolinaspa_setup');
@@ -203,3 +207,128 @@ function register_business_hours() {
 }
 
 add_action('widgets_init', 'register_business_hours');
+
+// Register Custom Post Type
+function carolinaspa_products() {
+
+    $labels = array(
+        'name' => _x('Our Products', 'Post Type General Name', 'carolinaspa'),
+        'singular_name' => _x('Our Product', 'Post Type Singular Name', 'carolinaspa'),
+        'menu_name' => __('Our Products', 'carolinaspa'),
+        'name_admin_bar' => __('Our Products', 'carolinaspa'),
+        'archives' => __('Our Products Archives', 'carolinaspa'),
+        'attributes' => __('Our Products Attributes', 'carolinaspa'),
+        'parent_item_colon' => __('Parent:', 'carolinaspa'),
+        'all_items' => __('All Products', 'carolinaspa'),
+        'add_new_item' => __('Add new Product', 'carolinaspa'),
+        'add_new' => __('Add New Product', 'carolinaspa'),
+        'new_item' => __('New Product', 'carolinaspa'),
+        'edit_item' => __('Edit Product', 'carolinaspa'),
+        'update_item' => __('Update Product', 'carolinaspa'),
+        'view_item' => __('View Product', 'carolinaspa'),
+        'view_items' => __('View Products', 'carolinaspa'),
+        'search_items' => __('Search Product', 'carolinaspa'),
+        'not_found' => __('Not found', 'carolinaspa'),
+        'not_found_in_trash' => __('Not found in Trash', 'carolinaspa'),
+        'featured_image' => __('Featured Image', 'carolinaspa'),
+        'set_featured_image' => __('Set featured image', 'carolinaspa'),
+        'remove_featured_image' => __('Remove featured image', 'carolinaspa'),
+        'use_featured_image' => __('Use as featured image', 'carolinaspa'),
+        'insert_into_item' => __('Insert into Product', 'carolinaspa'),
+        'uploaded_to_this_item' => __('Uploaded to this Product', 'carolinaspa'),
+        'items_list' => __('Product list', 'carolinaspa'),
+        'items_list_navigation' => __('Product list navigation', 'carolinaspa'),
+        'filter_items_list' => __('Product items list', 'carolinaspa'),
+    );
+    $args = array(
+        'label' => __('Our Product', 'carolinaspa'),
+        'description' => __('Shop Products for Carolina Spa', 'carolinaspa'),
+        'labels' => $labels,
+        'supports' => array('title', 'editor', 'thumbnail',),
+        'hierarchical' => true,
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 5,
+        'show_in_admin_bar' => true,
+        'show_in_nav_menus' => true,
+        'can_export' => true,
+        'has_archive' => true,
+        'exclude_from_search' => false,
+        'publicly_queryable' => true,
+        'capability_type' => 'page',
+    );
+    register_post_type('our_products', $args);
+}
+
+add_action('init', 'carolinaspa_products', 0);
+
+// Shortcode for display the products
+// Use the shortcode: [carolinaspa_products]
+function carolinaspa_products_shortcode() {
+    ?>
+    <div class="row products">
+        <?php
+        $args = array(
+            'posts_per_page' => 10,
+            'post_type' => 'our_products',
+            'orderby' => 'name',
+            'order' => 'ASC'
+        );
+        $products = new WP_Query($args);
+        while ($products->have_posts()): $products->the_post();
+            ?>
+            <div class="col-6 col-md-3 mb-5 mb-md-0">
+                <div class="card">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_post_thumbnail('product_thumb', array('class' => 'card-img-top img-fluid')); ?>
+                        <div class="card-block">
+                            <h3 class="card-title text-center text-uppercase mb-0"><?php the_title(); ?></h3>
+                            <p class="card-text text-uppercase"><?php the_field('short_description'); ?></p>
+                            <p class="price text-center mb-0">$ <?php the_field('price'); ?></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <?php
+        endwhile;
+        wp_reset_postdata();
+        ?>
+    </div>
+    <?php
+}
+
+add_shortcode('carolinaspa_products', 'carolinaspa_products_shortcode');
+
+// Shortcode for display the contact us form
+// Use the shortcode: [carolinaspa_mail]
+function carolinaspa_contactform_shortcode() {
+    ?>
+
+        <form id="contact_form" action="<?php get_template_directory_uri(); ?>/send.php" method="post" class="p-5 mt-5 contact-form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name"
+                   placeholder="Your Name">
+            <small class="form-text text-muted"></small>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email"
+                   placeholder="Your Email">
+            <small class="form-text text-muted"></small>
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="6"></textarea>
+            <small class="form-text text-muted"></small>
+        </div>
+
+        <input type="submit" class="btn btn-primary text-uppercase" name="submit" value="Submit"> 
+        <div id="output" class="alert alert-success text-center mt-3 d-none"></div>
+    </form>        
+
+    <?php
+}
+
+add_shortcode('carolinaspa_mail', 'carolinaspa_contactform_shortcode');
