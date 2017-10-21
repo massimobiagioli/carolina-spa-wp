@@ -132,7 +132,7 @@ class Business_Hours extends WP_Widget {
                 echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
             }
             ?>
-            <p class="text-center mt-5"><?php the_field('business_hours_text', $about->ID); ?></p>
+            <p class="text-center mt-3"><?php the_field('business_hours_text', $about->ID); ?></p>
 
             <?php
             $table = get_field('business_hours', $about->ID);
@@ -265,12 +265,12 @@ add_action('init', 'carolinaspa_products', 0);
 
 // Shortcode for display the products
 // Use the shortcode: [carolinaspa_products]
-function carolinaspa_products_shortcode() {
+function carolinaspa_products_shortcode($options) {
     ?>
     <div class="row products">
         <?php
         $args = array(
-            'posts_per_page' => 10,
+            'posts_per_page' => $options['number'],
             'post_type' => 'our_products',
             'orderby' => 'name',
             'order' => 'ASC'

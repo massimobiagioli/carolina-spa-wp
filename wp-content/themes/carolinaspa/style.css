@@ -124,7 +124,8 @@ nav.main-nav .nav-item {
     transition: background-color .3s ease;
 }
 
-nav.main-nav .nav-item:hover {
+nav.main-nav .nav-item:hover,
+.current_page_item {
     background-color: #39a69b;
     border-radius: 10px;
 }
@@ -175,13 +176,15 @@ nav.main-nav .nav-link {
     margin-top: -50px;
 }
 
-.image-info .btn-success {
+.image-info .btn-success,
+.all-products {
     background-color: #e082a8;
     border: none;
     border-radius: 0;
 }
 
-.image-info .btn-success:hover {
+.image-info .btn-success:hover,
+.all-products:hover {
     background-color: #ca5b88;
 }
 
@@ -198,7 +201,7 @@ nav.main-nav .nav-link {
 }
 
 .bg-hours {
-    background-image: url(../img/bg_hours.jpg);
+    background-image: url(img/bg_hours.jpg);
     background-repeat: no-repeat;
     background-position: center;
     min-height: 300px;
@@ -257,7 +260,7 @@ nav.main-nav .nav-link {
 **/
 
 .appointment {
-    background-image: url(../img/bg_appointment.jpg);
+    background-image: url(img/bg_appointment.jpg);
     background-repeat: none;
     background-position: center center;
     background-attachment: fixed;

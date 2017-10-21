@@ -5,7 +5,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Carolina Spa | <?php echo $title; ?></title>
+    <title>
+    <?php
+        wp_title('');
+        if (wp_title('', false)):
+            echo ':';
+        endif;
+        echo get_bloginfo('name') . ' | ' . get_bloginfo('description');
+    ?>
+    </title>
     <?php wp_head(); ?>
 </head>
 

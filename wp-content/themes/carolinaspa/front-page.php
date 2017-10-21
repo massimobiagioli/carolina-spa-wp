@@ -99,6 +99,37 @@ get_header();
     </div>
 </div>
 
+<!-- Business Hours Section -->
+<div class="business-hours">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 py-5">
+                <?php
+                $args = array(
+                    'before_title' => '<h2 class="text-center text-uppercase">',
+                    'after_title' => '</h2>'
+                );
+                the_widget('Business_Hours', 'title=Business Hours', $args);
+                ?>
+            </div>
+            <div class="col-md-6 bg-hours">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Check our products section -->
+<div class="container products py-5">
+    <h2 class="text-center text-uppercase"><span class="text-lowercase">Checkout our</span> products</h2>
+    <div class="row py-4">
+        <?php echo do_shortcode('[carolinaspa_products number="4"]'); ?>
+    </div>
+    <a href="<?php echo get_permalink(get_page_by_title('Products')); ?>" class="float-right btn btn-primary all-products">View All Products</a>
+</div>
+
+<!-- Appointment Section -->
+<?php get_template_part('templates/appointment'); ?>
+
 <?php
 get_footer();
 ?>
